@@ -40,6 +40,10 @@ Thumbs.db
 data/raw/
 data/processed/
 
+/notebooks/catboost_info
+/notebooks/feature_extraction_errors.log
+/src/respiratory_disease_screening.egg-info
+
 *.wav
 *.mp3
 *.flac
