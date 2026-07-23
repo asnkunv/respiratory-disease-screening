@@ -65,8 +65,9 @@ The project focuses on the complete AI lifecycle:
 # 🏗 System Architecture (Planned)
 
 The final application architecture follows a production ML system design:
+
+```text
                          User
-                           |
                            |
                            v
               +---------------------------+
@@ -77,7 +78,6 @@ The final application architecture follows a production ML system design:
               | - Display predictions     |
               +---------------------------+
                            |
-                           |
                            v
               +---------------------------+
               |     FastAPI Backend       |
@@ -87,7 +87,6 @@ The final application architecture follows a production ML system design:
               | - Request validation      |
               | - Manage inference jobs   |
               +---------------------------+
-                           |
                            |
                            v
               +---------------------------+
@@ -101,7 +100,6 @@ The final application architecture follows a production ML system design:
               | - Mel-spectrogram         |
               +---------------------------+
                            |
-                           |
                            v
               +---------------------------+
               |   ML Inference Service    |
@@ -113,43 +111,45 @@ The final application architecture follows a production ML system design:
               +---------------------------+
                            |
                            |
-          -------------------------------------
-          |                                   |
-          v                                   v
-+---------------------+          +----------------------+
-|   Model Storage     |          |  Prediction Storage  |
-|                     |          |                      |
-| - Trained models    |          | - User requests      |
-| - Model versions    |          | - Results            |
-| - Feature configs   |          | - Metadata           |
-+---------------------+          +----------------------+
-          |
-          |
-          v
-+---------------------+
-|   MLOps Pipeline    |
-|                     |
-| - Data ingestion    |
-| - Data validation   |
-| - Model training    |
-| - Model evaluation  |
-| - Model registry    |
-| - CI/CD deployment  |
-| - Model monitoring  |
-+---------------------+
-          |
-          |
-          v
-+---------------------+
-| Cloud Infrastructure|
-|                     |
-| - Docker containers |
-| - AWS/GCP/Azure     |
-| - Load balancing    |
-| - Logging           |
-| - Monitoring        |
-+---------------------+
+              +------------+------------+
+              |                         |
+              v                         v
 
++---------------------+       +----------------------+
+|   Model Storage     |       |  Prediction Storage  |
+|                     |       |                      |
+| - Trained models    |       | - User requests      |
+| - Model versions    |       | - Results            |
+| - Feature configs   |       | - Metadata           |
++---------------------+       +----------------------+
+
+                           |
+                           v
+
+              +---------------------------+
+              |   MLOps Pipeline          |
+              |                           |
+              | - Data ingestion          |
+              | - Data validation         |
+              | - Model training          |
+              | - Model evaluation        |
+              | - Model registry          |
+              | - CI/CD deployment        |
+              | - Model monitoring        |
+              +---------------------------+
+                           |
+                           v
+
+              +---------------------------+
+              | Cloud Infrastructure      |
+              |                           |
+              | - Docker containers       |
+              | - AWS/GCP/Azure           |
+              | - Load balancing          |
+              | - Logging                 |
+              | - Monitoring              |
+              +---------------------------+
+```
 
 ---
 
