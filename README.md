@@ -372,4 +372,380 @@ A Voting Classifier was developed using:
      verbose=0
  )
 ]
-    
+'''
+
+# 📂 Dataset Access and Sample Data
+
+This repository includes the datasets used during model development to allow users to reproduce experiments, test preprocessing pipelines, and evaluate model performance.
+
+The data directory contains:
+
+```
+data/
+│
+├── metadata/
+        ├── model_data/
+             ├── combined_features.csv
+             └── mel_spectograms
+                       └── (FOLDER NAMES -> LABELS)  
+
+
+```
+
+## Included Data
+
+The repository contains:
+
+- Processed respiratory audio data
+- Extracted feature representations
+- Dataset metadata
+- Training and testing splits
+- Labels required for model evaluation
+
+These files allow users to reproduce the machine learning workflow without manually downloading and preprocessing the original datasets.
+
+---
+
+# 📓 Jupyter Notebooks
+
+The `notebooks/` directory contains step-by-step notebooks demonstrating the complete machine learning workflow.
+
+```
+notebooks/
+│
+├── 01_exploration.ipynb
+├── 02_feature_engineering.ipynb
+├── 03_classical_ml.ipynb
+└── 04_deep_learning.ipynb
+```
+
+---
+
+## 01. Exploratory Data Analysis
+
+Notebook:
+
+```
+notebooks/01_exploration.ipynb
+```
+
+This notebook demonstrates:
+
+- Dataset loading
+- Metadata exploration
+- Class distribution analysis
+- Missing value analysis
+- Audio sample inspection
+- Data visualization
+
+Visualizations include:
+
+- Class distribution plots
+- Audio duration analysis
+- Feature distributions
+- Dataset statistics
+
+---
+
+## 02. Feature Engineering
+
+Notebook:
+
+```
+notebooks/02_feature_engineering.ipynb
+```
+
+This notebook demonstrates:
+
+- Audio preprocessing
+- Signal normalization
+- Feature extraction
+- Feature transformation
+- Preparing data for machine learning models
+
+Implemented audio features include:
+
+- MFCC features
+- Spectral centroid
+- Spectral bandwidth
+- Spectral rolloff
+- Zero crossing rate
+
+---
+
+## 03. Classical Machine Learning Models
+
+Notebook:
+
+```
+notebooks/03_classical_ml.ipynb
+```
+
+This notebook demonstrates training and evaluating:
+
+### Individual Models
+
+- Logistic Regression
+- Random Forest
+- Support Vector Machine
+- XGBoost
+- LightGBM
+- CatBoost
+- Gradient Boosting
+
+### Ensemble Model
+
+Voting Classifier combining:
+
+- Gradient Boosting
+- Random Forest
+- SVM
+- CatBoost
+
+Evaluation metrics:
+
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- ROC-AUC
+- Confusion Matrix
+
+---
+
+## 04. CNN Deep Learning Model
+
+Notebook:
+
+```
+notebooks/04_deep_learning.ipynb
+```
+
+This notebook demonstrates:
+
+- Converting audio into Mel-spectrogram representations
+- Building CNN architecture
+- Training deep learning models
+- Evaluating neural network performance
+
+Current status:
+
+🚧 CNN development is in progress.
+
+---
+
+# ⚙️ Installation and Local Setup
+
+## Prerequisites
+
+Required software:
+
+- Python 3.12+
+- Conda (recommended)
+- Git
+- Jupyter Notebook
+
+Optional:
+
+- NVIDIA GPU with CUDA support for CNN training
+
+---
+
+# 1. Clone Repository
+
+```bash
+git clone [https://github.com/<username>/<repository-name>.git](https://github.com/asnkunv/respiratory-disease-screening.git)
+
+cd <repository-name>
+```
+
+---
+
+# 2. Create Conda Environment
+
+The recommended setup uses Conda.
+
+Create the environment:
+
+```bash
+conda env create -f environment.yml
+```
+
+Activate:
+
+```bash
+conda activate resenv312
+```
+
+---
+
+## Alternative: Install Using pip
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate:
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Mac/Linux:
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# 🏋️ Model Training Workflow
+
+Follow these steps to reproduce model training.
+
+---
+
+## Step 1: Prepare Dataset
+
+Verify the dataset structure:
+
+```
+data/
+├── metadata/
+        └── model_data/
+```
+
+The notebooks automatically load the required files from these directories.
+
+---
+
+## Step 2: Run Exploratory Analysis
+
+Launch Jupyter:
+
+```bash
+jupyter notebook
+```
+
+Open:
+
+```
+notebooks/01_exploration.ipynb
+```
+
+Run all cells to analyze the dataset.
+
+---
+
+## Step 3: Generate Features
+
+Open:
+
+```
+notebooks/02_feature_engineering.ipynb
+```
+
+Run the notebook to:
+
+- Process audio data
+- Extract features
+- Generate model-ready datasets
+
+---
+
+## Step 4: Train Machine Learning Models
+
+Open:
+
+```
+notebooks/03_classical_ml.ipynb
+```
+
+The notebook will:
+
+1. Load processed features.
+2. Split data into training and testing sets.
+3. Train multiple ML algorithms.
+4. Compare model performance.
+5. Save evaluation results.
+
+---
+
+## Step 5: Train CNN Model
+
+Open:
+
+```
+notebooks/04_deep_learning.ipynb
+```
+
+The workflow:
+
+1. Load audio files.
+2. Convert audio into Mel-spectrograms.
+3. Train CNN model.
+4. Evaluate validation performance.
+
+---
+
+# 📊 Model Evaluation
+
+After training, models are evaluated using:
+
+## Classification Metrics
+
+| Metric | Purpose |
+|---|---|
+| Accuracy | Overall prediction correctness |
+| Precision | Reliability of positive predictions |
+| Recall | Ability to detect respiratory cases |
+| F1-score | Balance between precision and recall |
+| ROC-AUC | Ranking performance across thresholds |
+
+---
+
+## Visualization-Based Evaluation
+
+Evaluation plots are generated inside the notebooks.
+
+Included visualizations:
+
+- Confusion matrices
+- ROC curves
+- Precision-recall curves
+- Model comparison charts
+- Feature importance plots
+- Training/validation loss curves (CNN)
+
+---
+
+# 🧪 Reproducing Results
+
+To reproduce the reported results:
+
+1. Clone the repository.
+2. Create the Conda environment.
+3. Verify dataset files exist in `data/metadata/model_data`.
+4. Run notebooks sequentially:
+
+```
+01_EDA.ipynb
+        ↓
+02_Feature_Engineering.ipynb
+        ↓
+03_Classical_ML_Models.ipynb
+        ↓
+04_deep_learning.ipynb
+```
+
+All preprocessing, training, evaluation, and visualization steps are documented inside the notebooks.
